@@ -34,28 +34,39 @@ WEATHER_CODES = {
     3: '☁️ ابری',
     45: '🌫️ مه',
     48: '🌫️ مه یخی',
-    51: '🌦️ نم‌نم باران خفیف',
-    53: '🌦️ نم‌نم باران',
-    55: '🌦️ نم‌نم باران شدید',
-    56: '🌧️ نم‌نم باران یخی',
-    57: '🌧️ نم‌نم باران یخی شدید',
+    51: '🌦️ نم‌نم خفیف',
+    53: '🌦️ نم‌نم',
+    55: '🌦️ نم‌نم شدید',
+    56: '🌧️ نم‌نم یخی',
+    57: '🌧️ نم‌نم یخی شدید',
     61: '🌧️ باران خفیف',
     63: '🌧️ باران',
     65: '🌧️ باران شدید',
-    66: '🌧️ باران یخی خفیف',
+    66: '🌧️ باران یخی',
     67: '🌧️ باران یخی شدید',
     71: '❄️ برف خفیف',
     73: '❄️ برف',
     75: '❄️ برف شدید',
     77: '❄️ دانه‌های برف',
-    80: '🌧️ رگبار باران',
-    81: '🌧️ رگبار باران متوسط',
-    82: '🌧️ رگبار باران شدید',
+    80: '🌧️ رگبار',
+    81: '🌧️ رگبار متوسط',
+    82: '🌧️ رگبار شدید',
     85: '🌨️ رگبار برف',
     86: '🌨️ رگبار برف شدید',
     95: '⛈️ طوفان',
-    96: '⛈️ طوفان با تگرگ',
-    99: '⛈️ طوفان شدید با تگرگ',
+    96: '⛈️ طوفان + تگرگ',
+    99: '⛈️ طوفان شدید',
+}
+
+# Persian day names
+PERSIAN_DAYS = {
+    0: 'دوشنبه',
+    1: 'سه‌شنبه',
+    2: 'چهارشنبه',
+    3: 'پنجشنبه',
+    4: 'جمعه',
+    5: 'شنبه',
+    6: 'یکشنبه'
 }
 
 
@@ -72,6 +83,66 @@ def load_mountains():
         data = json.load(f)
     
     return data['mountains']
+
+
+# ============================================
+# Jalali Date Converter
+# ============================================
+
+def gregorian_to_jalali(gy, gm, gd):
+    """Convert Gregorian date to Jalali (Persian) date"""
+    
+    g_d_m = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334]
+    
+    if gm > 2:
+        gy2 = gy + 1
+    else:
+        gy2 = gy
+    
+    days = 355666 + (365 * gy) + ((gy2 + 3) // 4) - ((gy2 + 99) // 100) + \
+           ((gy2 + 399) // 400) + gd + g_d_m[gm - 1]
+    
+    jy = -1595 + (33 * (days // 12053))
+    days %= 12053
+    jy += 4 * (days // 1461)
+    days %= 1461
+    
+    if days > 365:
+        jy += (days - 1) // 365
+        days = (days - 1) % 365
+    
+    if days < 186:
+        jm = 1 + (days // 31)
+        jd = 1 + (days % 31)
+    else:
+        jm = 7 + ((days - 186) // 30)
+        jd = 1 + ((days - 186) % 30)
+    
+    return jy, jm, jd
+
+
+def get_jalali_date_str(gregorian_date_str):
+    """Convert Gregorian date string to Jalali string"""
+    date_obj = datetime.strptime(gregorian_date_str, '%Y-%m-%d')
+    jy, jm, jd = gregorian_to_jalali(date_obj.year, date_obj.month, date_obj.day)
+    
+    persian_months = [
+        '', 'ژانویه', 'فوریه', 'مارس', 'آوریل', 'مه', 'ژوئن',
+        'ژوئیه', 'اوت', 'سپتامبر', 'اکتبر', 'نوامبر', 'دسامبر'
+    ]
+    
+    persian_months_fa = [
+        '', 'فروردین', 'اردیبهشت', 'خرداد', 'تیر', 'مرداد', 'شهریور',
+        'مهر', 'آبان', 'آذر', 'دی', 'بهمن', 'اسفند'
+    ]
+    
+    return f"{jd} {persian_months_fa[jm]}"
+
+
+def get_day_name(date_str):
+    """Get Persian day name from date string"""
+    date_obj = datetime.strptime(date_str, '%Y-%m-%d')
+    return PERSIAN_DAYS[date_obj.weekday()]
 
 
 # ============================================
@@ -122,24 +193,16 @@ def format_weather_message(mountain, weather_data):
     
     daily = weather_data['daily']
     
-    # Get tomorrow and day after tomorrow
-    today = datetime.now()
-    tomorrow = today + timedelta(days=1)
-    day_after = today + timedelta(days=2)
+    # Build message - compact format
+    msg = f"🏔 {mountain['name']} ({mountain['elevation']:,}م)\n"
+    msg += f"📍 {mountain['province']}\n"
+    msg += "─────────────────\n"
     
-    msg = f"🏔️ **{mountain['name']}** ({mountain['name_en']})\n"
-    msg += f"📏 ارتفاع: {mountain['elevation']:,} متر\n"
-    msg += f"📍 {mountain['province']} | {mountain['range']}\n"
-    msg += "━━━━━━━━━━━━━━━━━━━━━━━━\n"
-    
+    # Show 2 days forecast
     for i in range(min(2, len(daily['time']))):
         date_str = daily['time'][i]
-        date_obj = datetime.strptime(date_str, '%Y-%m-%d')
-        
-        if i == 0:
-            day_name = "📍 فردا"
-        else:
-            day_name = "📍 پس‌فردا"
+        day_name = get_day_name(date_str)
+        jalali_date = get_jalali_date_str(date_str)
         
         weather_code = daily['weathercode'][i]
         weather_desc = WEATHER_CODES.get(weather_code, f'کد {weather_code}')
@@ -151,25 +214,30 @@ def format_weather_message(mountain, weather_data):
         wind_speed = daily['wind_speed_10m_max'][i]
         wind_gusts = daily['wind_gusts_10m_max'][i]
         
-        msg += f"\n📅 **{day_name}** ({date_str})\n"
-        msg += f"🌤️ {weather_desc}\n"
-        msg += f"🌡️ دما: {temp_min}° تا {temp_max}°\n"
+        # Temperature with wind chill indicator
+        if wind_speed > 20:
+            temp_indicator = "🌡"
+        else:
+            temp_indicator = "🌡"
+        
+        msg += f"\n📅 {day_name} {jalali_date}\n"
+        msg += f"{weather_desc}\n"
+        msg += f"🌡 {temp_min}° تا {temp_max}°"
         
         if precipitation > 0:
-            msg += f"🌧️ بارش: {precipitation} میلی‌متر\n"
+            msg += f" | 🌧 {precipitation}mm"
         
         if snowfall > 0:
-            msg += f"❄️ برف: {snowfall} سانتی‌متر\n"
+            msg += f" | ❄️ {snowfall}cm"
         
-        msg += f"💨 باد: {wind_speed} km/h"
+        msg += f"\n💨 {wind_speed}km/h"
         
         if wind_gusts > wind_speed * 1.5:
-            msg += f" (تندباد: {wind_gusts} km/h)"
+            msg += f" (تندباد {wind_gusts})"
         
         msg += "\n"
     
-    msg += "━━━━━━━━━━━━━━━━━━━━━━━━\n"
-    msg += "🌐 Open-Meteo API | @iran_mountain_weather"
+    msg += "─────────────────"
     
     return msg
 
