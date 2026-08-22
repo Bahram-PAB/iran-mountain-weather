@@ -28,15 +28,6 @@
       "range": "آذربایجان"
     },
     {
-      "name": "خرسان شمالی",
-      "name_en": "North Khersan",
-      "elevation": 4680,
-      "latitude": 36.3500,
-      "longitude": 50.9200,
-      "province": "مازندران",
-      "range": "البرز"
-    },
-    {
       "name": "تخت سلیمان",
       "name_en": "Takht-e Soleyman",
       "elevation": 4659,
@@ -53,15 +44,6 @@
       "longitude": 51.4300,
       "province": "کهگیلویه/اصفهان",
       "range": "زاگرس"
-    },
-    {
-      "name": "هزاران",
-      "name_en": "Hazaran",
-      "elevation": 4501,
-      "latitude": 29.6833,
-      "longitude": 57.2167,
-      "province": "کرمان",
-      "range": "مرکزی"
     },
     {
       "name": "خولنو",
@@ -125,15 +107,6 @@
       "longitude": 51.4200,
       "province": "تهران",
       "range": "البرز"
-    },
-    {
-      "name": "بُل",
-      "name_en": "Bel Mountain",
-      "elevation": 3943,
-      "latitude": 30.4800,
-      "longitude": 51.8800,
-      "province": "فارس",
-      "range": "زاگرس"
     },
     {
       "name": "تفتان",
