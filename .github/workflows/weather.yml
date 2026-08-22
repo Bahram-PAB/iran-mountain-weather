@@ -1,0 +1,29 @@
+name: Mountain Weather Bot
+
+on:
+  schedule:
+    # سه‌شنبه ساعت ۸ صبح
+    - cron: '0 8 * * 2'
+    # چهارشنبه ساعت ۸ صبح
+    - cron: '0 8 * * 3'
+  workflow_dispatch: # اجرای دستی
+
+jobs:
+  send-weather:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: Run Weather Bot
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python3 bot.py

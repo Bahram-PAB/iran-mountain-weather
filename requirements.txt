@@ -1,0 +1,6 @@
+# No external dependencies required
+# Using built-in Python libraries:
+# - urllib.request (HTTP requests)
+# - json (JSON parsing)
+# - os (environment variables)
+# - datetime (date handling)

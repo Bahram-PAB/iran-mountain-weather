@@ -1,0 +1,184 @@
+{
+  "mountains": [
+    {
+      "name": "دماوند",
+      "name_en": "Damavand",
+      "elevation": 5610,
+      "latitude": 35.9525,
+      "longitude": 52.1094,
+      "province": "مازندران",
+      "range": "البرز"
+    },
+    {
+      "name": "علم‌کوه",
+      "name_en": "Alam-Kuh",
+      "elevation": 4850,
+      "latitude": 36.3753,
+      "longitude": 50.9483,
+      "province": "مازندران",
+      "range": "البرز"
+    },
+    {
+      "name": "سبلان",
+      "name_en": "Sabalan",
+      "elevation": 4811,
+      "latitude": 38.4225,
+      "longitude": 47.9958,
+      "province": "اردبیل",
+      "range": "آذربایجان"
+    },
+    {
+      "name": "خ尔斯ان شمالی",
+      "name_en": "North Khersan",
+      "elevation": 4680,
+      "latitude": 36.3500,
+      "longitude": 50.9200,
+      "province": "مازندران",
+      "range": "البرز"
+    },
+    {
+      "name": "تخت سلیمان",
+      "name_en": "Takht-e Soleyman",
+      "elevation": 4659,
+      "latitude": 36.3600,
+      "longitude": 50.9300,
+      "province": "مازندران",
+      "range": "البرز"
+    },
+    {
+      "name": "دنای مرکزی",
+      "name_en": "Dena",
+      "elevation": 4409,
+      "latitude": 30.9500,
+      "longitude": 51.4300,
+      "province": "کهگیلویه/اصفهان",
+      "range": "زاگرس"
+    },
+    {
+      "name": "هزاران",
+      "name_en": "Hazaran",
+      "elevation": 4501,
+      "latitude": 29.6833,
+      "longitude": 57.2167,
+      "province": "کرمان",
+      "range": "مرکزی"
+    },
+    {
+      "name": "خولeno",
+      "name_en": "Kholeno",
+      "elevation": 4375,
+      "latitude": 35.9200,
+      "longitude": 51.4500,
+      "province": "تهران",
+      "range": "البرز"
+    },
+    {
+      "name": "آزادکوه",
+      "name_en": "Azad Kuh",
+      "elevation": 4375,
+      "latitude": 36.2800,
+      "longitude": 51.0100,
+      "province": "مازندران",
+      "range": "البرز"
+    },
+    {
+      "name": "سیالان",
+      "name_en": "Sialan",
+      "elevation": 4250,
+      "latitude": 36.2200,
+      "longitude": 50.0200,
+      "province": "مازندران/قزوین",
+      "range": "البرز"
+    },
+    {
+      "name": "زردکوه",
+      "name_en": "Zard-Kuh",
+      "elevation": 4221,
+      "latitude": 32.2500,
+      "longitude": 49.8800,
+      "province": "چهارمحال",
+      "range": "زاگرس"
+    },
+    {
+      "name": "شیرکوه",
+      "name_en": "Shir Kuh",
+      "elevation": 4050,
+      "latitude": 31.8600,
+      "longitude": 54.1200,
+      "province": "یزد",
+      "range": "مرکزی"
+    },
+    {
+      "name": "اشترانکوه",
+      "name_en": "Oshtorankuh",
+      "elevation": 4050,
+      "latitude": 33.0800,
+      "longitude": 49.2100,
+      "province": "لرستان",
+      "range": "زاگرس"
+    },
+    {
+      "name": "تُوال",
+      "name_en": "Tochal",
+      "elevation": 3933,
+      "latitude": 35.8800,
+      "longitude": 51.4200,
+      "province": "تهران",
+      "range": "البرز"
+    },
+    {
+      "name": "بُل",
+      "name_en": "Bel Mountain",
+      "elevation": 3943,
+      "latitude": 30.4800,
+      "longitude": 51.8800,
+      "province": "فارس",
+      "range": "زاگرس"
+    },
+    {
+      "name": "تافتن",
+      "name_en": "Taftan",
+      "elevation": 3941,
+      "latitude": 28.5800,
+      "longitude": 61.1300,
+      "province": "سیستان",
+      "range": "بلوچستان"
+    },
+    {
+      "name": "سفیدکوه",
+      "name_en": "Sefid Kuh",
+      "elevation": 3800,
+      "latitude": 32.6500,
+      "longitude": 51.2800,
+      "province": "اصفهان",
+      "range": "مرکزی"
+    },
+    {
+      "name": "الوند",
+      "name_en": "Alvand",
+      "elevation": 3580,
+      "latitude": 34.7800,
+      "longitude": 48.5100,
+      "province": "همدان",
+      "range": "زاگرس"
+    },
+    {
+      "name": "ساوه",
+      "name_en": "Sahand",
+      "elevation": 3707,
+      "latitude": 37.7500,
+      "longitude": 46.5000,
+      "province": "آذربایجان شرقی",
+      "range": "آذربایجان"
+    },
+    {
+      "name": "بینالود",
+      "name_en": "Binalud",
+      "elevation": 3220,
+      "latitude": 36.4500,
+      "longitude": 58.5500,
+      "province": "خراسان رضوی",
+      "range": "البرز"
+    }
+  ]
+}
