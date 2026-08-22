@@ -19,6 +19,9 @@ TELEGRAM_BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN', '')
 TELEGRAM_CHAT_ID = os.environ.get('TELEGRAM_CHAT_ID', '')
 OPEN_METEO_URL = 'https://api.open-meteo.com/v1/forecast'
 
+# Channel info
+CHANNEL_FOOTER = "📍 کانال کوهنامه: @koohnameh"
+
 WEATHER_CODES = {
     0: '☀️ صاف', 1: '🌤️ صاف', 2: '⛅ نیمه‌ابری', 3: '☁️ ابری',
     45: '🌫️ مه', 48: '🌫️ مه',
@@ -136,8 +139,10 @@ def build_messages(all_data):
             lines1.append(build_day_line(mountain, weather['daily'], 0))
             lines2.append(build_day_line(mountain, weather['daily'], 1))
 
-    msg1 = '\n\n'.join(lines1)
-    msg2 = '\n\n'.join(lines2)
+    footer = f"━━━━━━━━━━━━━━━━━━━━━━\n{CHANNEL_FOOTER}"
+
+    msg1 = '\n\n'.join(lines1) + '\n\n' + footer
+    msg2 = '\n\n'.join(lines2) + '\n\n' + footer
 
     return [msg1, msg2]
 
