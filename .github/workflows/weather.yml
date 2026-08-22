@@ -2,10 +2,10 @@ name: Mountain Weather Bot
 
 on:
   schedule:
-    # سه‌شنبه ساعت ۸ صبح
-    - cron: '0 8 * * 2'
-    # چهارشنبه ساعت ۸ صبح
-    - cron: '0 8 * * 3'
+    # سه‌شنبه ساعت ۱۲:۳۰ UTC = ۱۶:۳۰ ایران
+    - cron: '30 12 * * 2'
+    # چهارشنبه ساعت ۱۲:۳۰ UTC = ۱۶:۳۰ ایران
+    - cron: '30 12 * * 3'
   workflow_dispatch: # اجرای دستی
 
 jobs:
