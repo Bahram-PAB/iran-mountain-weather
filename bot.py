@@ -139,7 +139,7 @@ def build_messages(all_data):
             lines1.append(build_day_line(mountain, weather['daily'], 0))
             lines2.append(build_day_line(mountain, weather['daily'], 1))
 
-    footer = f"━━━━━━━━━━━━━━━━━━━━━━\n{CHANNEL_FOOTER}"
+    footer = f"━━━━━━━━━━━━━━━\n{CHANNEL_FOOTER}"
 
     msg1 = '\n\n'.join(lines1) + '\n\n' + footer
     msg2 = '\n\n'.join(lines2) + '\n\n' + footer
