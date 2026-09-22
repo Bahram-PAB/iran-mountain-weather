@@ -128,8 +128,8 @@ def build_messages(all_data):
     date1 = all_data[0][1]['daily']['time'][0]
     date2 = all_data[0][1]['daily']['time'][1]
 
-    header1 = f"🏔 پیش‌بینی {get_day_name(date1)} {get_jalali_str(date1)}\n{'━' * 20}"
-    header2 = f"🏔 پیش‌بینی {get_day_name(date2)} {get_jalali_str(date2)}\n{'━' * 20}"
+    header1 = f"🏔 پیش‌بینی {get_day_name(date1)} {get_jalali_str(date1)}\n{'━' * 10}"
+    header2 = f"🏔 پیش‌بینی {get_day_name(date2)} {get_jalali_str(date2)}\n{'━' * 10}"
 
     lines1 = [header1]
     lines2 = [header2]
