@@ -117,7 +117,8 @@ def build_day_line(mountain, daily, day_index):
     if snow > 0:
         extra += f' | ❄️{snow}cm'
 
-    return f"⛰️ {mountain['name']} ({mountain['elevation']:,}م)\n{weather} | 🌡{tmin}°-{tmax}° | 💨{wind}km/h{extra}"
+    # ponytail: degree only at the end of the range; add per-value degree if a platform renders it badly
+    return f"⛰️ {mountain['name']} ({mountain['elevation']:,}م)\n{weather} | 🌡{tmin}/{tmax}° | 💨{wind}km/h{extra}"
 
 
 def build_messages(all_data):
